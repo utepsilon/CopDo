@@ -1,5 +1,9 @@
 package com.core.copdo.models;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -16,6 +20,9 @@ public class Todo {
     private LocalDateTime startDateTime;
 
     private LocalDateTime endDateTime;
+
+    @Field
+    private  boolean status = false;
 
     public String getId() {
         return id;
@@ -65,13 +72,22 @@ public class Todo {
         this.endDateTime = endDateTime;
     }
 
-    public Todo(String id, String title, String category, String description, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public Todo(String id, String title, String category, String description, LocalDateTime startDateTime, LocalDateTime endDateTime, boolean status) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.description = description;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
+        this.status = status;
     }
 
     public Todo() {
