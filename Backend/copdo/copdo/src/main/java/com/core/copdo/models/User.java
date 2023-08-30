@@ -1,9 +1,12 @@
 package com.core.copdo.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
 public class User {
 
+    @Id
     private  String userId;
 
     private String name;
@@ -52,5 +55,15 @@ public class User {
     }
 
     public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", todoList=" + todoList +
+                '}';
     }
 }

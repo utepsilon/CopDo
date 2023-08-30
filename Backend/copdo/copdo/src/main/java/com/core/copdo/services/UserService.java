@@ -16,12 +16,14 @@ import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
 
     public Optional<ResponseEntity<Response>> saveUser(User user) {
 
@@ -63,7 +65,8 @@ public class UserService {
 
         try {
 
-            User existingUser = userRepository.findById(userId).block();
+            User existingUser =  userRepository.findById(userId).block();
+            System.out.println(existingUser);
             existingUser.setTodoList(todoList);
             userRepository.save(existingUser);
 

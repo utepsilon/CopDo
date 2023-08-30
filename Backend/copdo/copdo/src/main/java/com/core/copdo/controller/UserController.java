@@ -17,14 +17,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/todo")
+    @PostMapping("/user")
     public ResponseEntity<Response> saveUser(@RequestBody User user) {
 
         return userService.saveUser(user).get();
 
     }
 
-    @GetMapping("/todo/{id}")
+    @GetMapping("/user/{id}")
 
     public ResponseEntity<Response> getUserById(@PathVariable String userId) {
 
@@ -32,8 +32,8 @@ public class UserController {
         return userService.getUserDetails(userId).get();
     }
 
-    @PutMapping("/todo")
-    public ResponseEntity<Response> updateUserDetails(@RequestBody List<Todo> todos, @Param("userId") String userID) {
+    @PutMapping("/user")
+    public ResponseEntity<Response> updateUserDetails(@RequestBody List<Todo> todos, @RequestParam("user") String userID) {
 
         return userService.updateUserTodos(todos, userID).get();
     }
